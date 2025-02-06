@@ -1,17 +1,21 @@
 # mad libs!
-# give the user a choice of four stories to choose from
-# depending on the story, cycle through the necessary prompts to fill in the blanks
-# print the new story with the user selected words
-# use .isalpha() to ensure all the entries are only letters and .lower() for formatting.
-# bonus round! use choice() to generate random responses from the category list if prompted by the user
+# The starting menu gives the user a choice of four stories to choose from.
+# Depending on the story, cycle through the necessary prompts for the blanks.
+# Print the new story with the user selected words.
+# Use .isalpha() to ensure all the entries are only letters and .lower() for
+# formatting.
+# The above still needs work.
+# Bonus round! Use choice() to generate random responses from the category 
+# list if prompted.
 # let's get into it!
 
-# choice from the random module for generating random stories
+# Choice from the random module for generating random stories
 from random import choice 
 
 
-# category lists lists for the program generated mad libs
-# two lists for nouns and adj to ensure the generated mad libs don't use the same word for both gaps
+# Category lists lists for the program generated mad libs.
+# two lists for nouns and adjectives to ensure the generated mad libs don't 
+# use the same word for both gaps
 
 adjective_list = ['magnificent', 'serene', 'ethereal', 'vibrant', 'smelly', 'hungry']
 adjective_two_list = ['mysterious', 'silly', 'cranky', 'cheeky', 'awkward', 'bizarre']
@@ -27,9 +31,7 @@ vegetable_list = ['beet', 'spinach', 'cucumber', 'potato', 'celery', 'broccoli',
 
 # the function will start with a while loop (my favourite) to keep the game running. 
 def mad_lib():
-    
     while True:
-
         print('\nChoose a story!')
         print('1. The Mysterious Island')
         print('2. The Fantasic Voyage')
@@ -37,19 +39,19 @@ def mad_lib():
         print('4. Alien Invasion')
         print('5. Exit the game')
 
-        # user chooses a story to start the loop or '5' to end the game
         story = input('Choose a story (1-4): ')
-
-        # error for choice
+        # Error for choice
         if story not in ['1', '2', '3', '4', '5']:
-            print('Error: Please enter a number between 1 and 4 for a story. Enter 5 to exit.')
+            print(
+                'Error: Please enter a number between 1 and 4 for a story. Enter 5 to exit.'
+            )
 
-        # ending the game
         if story == '5':
             print('\nThanks for playing, bye bye now!')
             break
 
-        # give the user the option to fill in the mad lib themselves or get a program generated response
+        # Give the user the option to fill in the mad lib themselves 
+        # or get a program generated response
         elif story in ['1', '2', '3','4']:
         
             print('\nDo you want to...')
@@ -58,19 +60,18 @@ def mad_lib():
             print('3. Back to menu')
 
             response = input('How would you like to proceed: ')
-
-            #error for response
+            # Error for response
             if response not in ['1', '2', '3']:
                 print("Error: Invalid entry")
-
-            # user will add custom responses to complete the story   
-            # there's always at least one noun and adjective, placing this code here to reduce repeating code 
+ 
+            # There's always at least one noun and adjective, 
+            # placing this code here to reduce repeating code 
             if response == '1':
                 print('\nPlease provide the following:')
                 adjective = input('An adjective: ').lower()
                 noun = input('A noun: ').lower()
                 
-                # collects unique user inputs and display the story
+                # Collects unique user inputs and displays the story
                 if story == '1':
                     
                     adjective_two = input('Another adjective: ').lower()
@@ -92,8 +93,9 @@ def mad_lib():
                     
                     print(
                         f'''\n
-                        In a {color} submarine, the explorers journeyed to the deepest part of the ocean. 
-                        They encountered {adjective} fish, a giant {animal}, and a lost city made of {noun}.'''
+                        In a {color} submarine, the explorers journeyed to the 
+                        deepest part of the ocean. They encountered {adjective} fish, 
+                        a giant {animal}, and a lost city made of {noun}.'''
                     )
 
                 elif story == '3':
@@ -112,7 +114,8 @@ def mad_lib():
                         The {color}, rusty train chugged along the tracks, 
                         transporting passengers through {city}. One rainy night, 
                         the train mysteriously arrived in the year {number}, 
-                        where they met a {noun} and learned about life in the {adjective} past.''' 
+                        where they met a {noun} and learned about life in the 
+                        {adjective} past.''' 
                     )
                 
                 elif story == '4':
@@ -124,16 +127,15 @@ def mad_lib():
                     
                     print(
                         f'''\n
-                        The citizens of {city} were startled by the arrival of {adjective} spaceships. 
-                        The {noun} emerged, looking like a cross between a {animal} and a {vegetable}. 
-                        Luckily, a brave {occupation} used their knowledge of {noun_two} to scare the aliens away.'''
+                        The citizens of {city} were startled by the arrival of {adjective} 
+                        spaceships. The {noun} emerged, looking like a cross between a 
+                        {animal} and a {vegetable}. Luckily, a brave {occupation} used their 
+                        knowledge of {noun_two} to scare the aliens away.'''
                     )
 
 
             # choice() to generate random stories from category lists
             elif response == '2':
-
-                # variables for the randomly generated stories
                 adjective = choice(adjective_list)
                 adjective_two = choice(adjective_two_list)
                 animal = choice(animal_list)
@@ -145,7 +147,7 @@ def mad_lib():
                 occupation = choice(occupation_list)
                 vegetable = choice(vegetable_list)
 
-                # mad lib template variables
+                # Store the mad lib in a variable to catch the choice() variables.
                 mysterious_island =  f'''\n
                                 The shipwrecked sailors washed ashore on a {adjective} island. 
                                 They explored the island, discovering a hidden {noun}, 
@@ -153,21 +155,23 @@ def mad_lib():
                                 and a {noun_two} that spoke in a {adjective_two} voice.'''
 
                 fantastic_voyage =  f'''\n
-                                In a {color} submarine, the explorers journeyed to the deepest part of the ocean. 
-                                They encountered {adjective} fish, a giant {animal}, and a lost city made of {noun}.'''
+                                In a {color} submarine, the explorers journeyed to the 
+                                deepest part of the ocean. They encountered {adjective} fish, 
+                                a giant {animal}, and a lost city made of {noun}.'''
 
                 time_traveling_train = f'''\n
                                 The {color}, rusty train chugged along the tracks, 
                                 transporting passengers through {city}. One rainy night, 
                                 the train mysteriously arrived in the year {number}, 
-                                where they met a {noun} and learned about life in the {adjective} past.'''
+                                where they met a {noun} and learned about life in the 
+                                {adjective} past.'''
 
                 alien_invasion = f'''\n
-                                The citizens of {city} were startled by the arrival of {adjective} spaceships. 
-                                The {noun} emerged, looking like a cross between a {animal} and a {vegetable}. 
-                                Luckily, a brave {occupation} used their knowledge of {noun_two} to scare the aliens away.'''
+                                The citizens of {city} were startled by the arrival of {adjective} 
+                                spaceships. The {noun} emerged, looking like a cross between 
+                                a {animal} and a {vegetable}. Luckily, a brave {occupation} 
+                                used their knowledge of {noun_two} to scare the aliens away.'''
                 
-                # generate random stories
                 if story == '1':
                     print(mysterious_island)
 
@@ -180,10 +184,9 @@ def mad_lib():
                 elif story == '4':
                     print(alien_invasion)
             
-            #return to main menu
+            # Returns the user to main menu.
             elif response == '3':
                 mad_lib()
-        
 
-# function call to start the menu
+# Function call to start the menu
 mad_lib()
